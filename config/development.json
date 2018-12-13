@@ -1,8 +1,10 @@
 {
     "dbConfig":{
-        "domain" : "localhost",
-        "port" : "27017",
-        "dbname" : "recruit-easy-dev"
+        "domain" : "ds219532.mlab.com",
+        "port" : "19532",
+        "dbname" : "recruit-easy-dev",
+        "username":"admin",
+        "password" : "admin123"
     },
     "password_salt" : "/)(werh&uuueh78]34758fhg/*&^sdvj"
 

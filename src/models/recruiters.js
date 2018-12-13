@@ -18,7 +18,7 @@ const recruiterSchema = new Schema({
         type : String,
         required :true,
         minlength : 6,
-        maxlength : 30
+        maxlength : 100
     },
     password : {
         type : String,
@@ -50,7 +50,7 @@ const recruiterSchema = new Schema({
 
      name : Joi.string().required().min(3).max(50),
      phone : Joi.number().required().min(10),
-     email : Joi.string().email().required().min(6).max(30),
+     email : Joi.string().email().required().min(6).max(100),
      company : Joi.string().required().min(3).max(30),
      password : Joi.string().required().min(8).max(1000)
 

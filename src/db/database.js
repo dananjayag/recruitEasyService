@@ -7,8 +7,10 @@ class Database{
 
     _construct(){
             let dbConfigs = config.get("dbConfig");
-            mongoose.connect(`mongodb://${dbConfigs.domain}:${dbConfigs.port}/${dbConfigs.dbname}`,{
-            connectTimeoutMS: 1000,
+            let uri = `mongodb://${dbConfigs.username}:${dbConfigs.password}@${dbConfigs.domain}:${dbConfigs.port}/${dbConfigs.dbname}`;
+            console.log(uri,"\n")
+            mongoose.connect(uri,{
+            connectTimeoutMS: 5000,
             useNewUrlParser: true  
             }, (err)=>{
                 if(!err){

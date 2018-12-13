@@ -1,9 +1,6 @@
 import express from 'express';
 import _ from 'lodash';
-import Recruiter,{validateRecruiter,postSchema,putSchema} from '../models/recruiters';
-import {hashPassword} from '../utility/password';
-import { createDecipher } from 'crypto';
-import { resolve } from 'url';
+import Candidate,{validateCandidate,schema} from '../models/candidate';
 const Router = express.Router();
 
 Router.get('/',async (req, res)=>{
@@ -74,10 +71,6 @@ Router.put('/:id',async (req, res)=>{
     }
 })
 
-Router.delete('/:id', async (req, res)=>{  
-    let recruiter = await Recruiter.findOneAndDelete(req.params.id);
-    if(!recruiter) return res.status(400).send({"error_message":"Invalid Id"});
-    res.status(202).send(recruiter);
-})
+
 
 export default Router;
