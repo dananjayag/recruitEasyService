@@ -1,0 +1,8 @@
+{
+    "dbConfig":{
+        "domain" : "localhost",
+        "port" : "27017",
+        "dbname" : "recruit-easy-prod"
+    },
+    "password_salt" : "werh&uuueh7834758fhgsdvj"
+}
