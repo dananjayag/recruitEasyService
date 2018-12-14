@@ -1,6 +1,7 @@
 import mongoose, { Schema } from 'mongoose';
 import Joi from 'joi';
 import _ from 'lodash';
+import {generateJwtToken} from '../utility/generatetoken';
 const recruiterSchema = new Schema({
     name : {
         type: String,
@@ -66,6 +67,17 @@ const recruiterSchema = new Schema({
         return Joi.validate(recruiter  , schema)
  }
 
+
+ recruiterSchema.methods.generateToken = async function(){
+    try{
+      const token = await generateJwtToken({id:this._id});
+      return token;
+    }
+    catch(ex){
+       return false;
+    }
+
+ }
  const Recruiter = mongoose.model('Recruiter', recruiterSchema);
 
  export default Recruiter;

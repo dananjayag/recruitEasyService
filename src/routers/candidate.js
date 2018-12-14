@@ -5,19 +5,19 @@ const Router = express.Router();
 
 Router.get('/',async (req, res)=>{
    try{
-    let recruiters = await Recruiter.find().select({password : 0}).sort("name");
-    res.status(200).send(recruiters);
+    let candidates = await Candidate.find().sort("name");
+    res.status(200).send(candidates);
    }
    catch(err){
-    res.status(500).send(recruiters);
+    res.status(500).send({err});
    }
 })
 
 Router.get('/:id',async (req, res)=>{
     try{
-        let recruiter = await Recruiter.findOne({_id : req.params.id}).select({password:0});
-        if(!recruiter) return res.status(400).send({error : "User doesn't exist"});
-        res.status(200).send(recruiter);
+        let candidate = await Candidate.findOne({_id : req.params.id});
+        if(!candidate) return res.status(400).send({error : "Candidate doesn't exist"});
+        res.status(200).send(candidate);
     }
     catch(err){
         res.status(400).send({error : "Invalid Id"});
@@ -26,25 +26,18 @@ Router.get('/:id',async (req, res)=>{
 
 Router.post('/',async(req, res)=>{
       // Validating request
-      const {error} = validateRecruiter(req.body,postSchema);
+      const {error} = validateCandidate(req.body,schema);
       if(!!error) return res.status(400).send({"error_message":error.details[0].message});
       // check for user existance
-      let isrecruiterExist = await Recruiter.findOne({email : req.body.email});
-      if(!!isrecruiterExist) return res.status(409).send({"error_message":"user already exist"});
+      let iscandidateExist = await Candidate.findOne({$or:[{email : req.body.email},{phone:req.body.phone}] });
+      if(!!iscandidateExist) return res.status(409).send({"error_message":"candidate already exist"});
 
       //storing in DB
-      const user = await hashPassword(req.body);
-      const recruiter = new Recruiter(user);
+      let body = _.pick(req.body,['name','phone','email']);
+      const candidate = new Candidate(body);
       try{
-        let user = await recruiter.save();
-        let response = {
-            _id : user._id,
-            name : user.name,
-            email : user.email,
-            company: user.company,
-            phone : user.phone
-        }
-        res.status(200).send(response);
+        let user = await candidate.save();
+        res.status(200).send(user);
       }
       catch(err){
         res.status(400).send({err});
@@ -53,17 +46,17 @@ Router.post('/',async(req, res)=>{
 })
 
 Router.put('/:id',async (req, res)=>{
-    let recruiter = await Recruiter.findOne({_id : req.params.id});
-    if(!recruiter) return res.status(400).send({"error_message":"Invalid Id"});
+    let candidate = await Candidate.findOne({_id : req.params.id});
+    if(!candidate) return res.status(400).send({"error_message":"Invalid Id"});
 
-    let body = _.pick(req.body,["name","company","phone"]);
+    let body = _.pick(req.body,["name","email","phone"]);
 
-    const {error} = validateRecruiter(body,putSchema);
+    const {error} = validateCandidate(body,schema);
     if(!!error) return res.status(400).send({"error_message":error.details[0].message});
 
     try{
-     let updatedRecruiter = await Recruiter.findOneAndUpdate({_id :req.params.id},{name :body.name,company:body.company,phone:body.phone},{new:true}).select({password:0});
-     res.status(201).send(updatedRecruiter);
+     let updatedCandidate = await Candidate.findOneAndUpdate({_id :req.params.id},{name :body.name,phone:body.phone,email:body.email},{new:true}).select({password:0});
+     res.status(201).send(updatedCandidate);
     }
     catch(ex){
         console.log(ex);

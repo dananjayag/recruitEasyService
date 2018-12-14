@@ -8,7 +8,6 @@ class Database{
     _construct(){
             let dbConfigs = config.get("dbConfig");
             let uri = `mongodb://${dbConfigs.username}:${dbConfigs.password}@${dbConfigs.domain}:${dbConfigs.port}/${dbConfigs.dbname}`;
-            console.log(uri,"\n")
             mongoose.connect(uri,{
             connectTimeoutMS: 5000,
             useNewUrlParser: true  

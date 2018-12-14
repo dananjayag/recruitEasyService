@@ -6,6 +6,7 @@
         "username":"admin",
         "password" : "admin123"
     },
-    "password_salt" : "/)(werh&uuueh78]34758fhg/*&^sdvj"
+    "password_salt" : "/)(werh&uuueh78]34758fhg/*&^sdvj",
+    "jwtsecret" : "paltubolyemaklappa"
 
 }

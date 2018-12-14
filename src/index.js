@@ -8,6 +8,7 @@ import Joi_objectId from 'joi-objectid';
 Joi.objectId = Joi_objectId(Joi);
 
 import recruiter from  './routers/recruiter';
+import auth from './routers/auth';
 import candidate from  './routers/candidate';
 
 const app = express();
@@ -25,6 +26,7 @@ app.use(bodyParser.json());
 
 app.use('/api/v1/recruiter',recruiter);
 app.use('/api/v1/candidate',candidate);
+app.use('/api/v1/auth',auth);
 
 app.listen(3000,()=>{
     console.log("Started Server in port number 3000")
