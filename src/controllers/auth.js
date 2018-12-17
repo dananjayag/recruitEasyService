@@ -1,6 +1,7 @@
 import  _ from 'lodash';
 import Recruiter from '../models/recruiters';
-import {comparepassword} from '../utility/password' 
+import {comparepassword} from '../utility/password';
+import {generateJwtToken} from '../utility/jwt';
 export  const loginContoller = async(req,res)=>{
     
     let body = _.pick(req.body,['email','password']);
@@ -9,8 +10,8 @@ export  const loginContoller = async(req,res)=>{
           if(!recruiter)  return res.status(401).send("Invalid email or password");
           let isValid = await comparepassword(recruiter.password,body.password); 
           if(isValid){
-                let token = await recruiter.methods.generateToken();
-                console.log(token,"token");
+                const payload = { id : recruiter._id,email:recruiter.email}
+                let token = await generateJwtToken(payload);
                 res.status(200).send(token);
             }
           else{

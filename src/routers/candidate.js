@@ -1,9 +1,10 @@
 import express from 'express';
 import _ from 'lodash';
 import Candidate,{validateCandidate,schema} from '../models/candidate';
+import {authMiddleware} from '../middlewares/auth';
 const Router = express.Router();
 
-Router.get('/',async (req, res)=>{
+Router.get('/', authMiddleware,async (req, res)=>{
    try{
     let candidates = await Candidate.find().sort("name");
     res.status(200).send(candidates);
