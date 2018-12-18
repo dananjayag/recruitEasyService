@@ -6,17 +6,21 @@ const Router = express.Router();
 
 Router.get('/', authMiddleware,async (req, res)=>{
    try{
-    let candidates = await Candidate.find().sort("name");
-    res.status(200).send(candidates);
+        if(!!req.locals && !!req.locals.user)
+        {
+            let candidates = await Candidate.find({created_by : req.locals.user.id})
+            res.status(200).send(candidates);
+        }
    }
    catch(err){
     res.status(500).send({err});
    }
 })
 
-Router.get('/:id',async (req, res)=>{
+Router.get('/:id',authMiddleware,async (req, res)=>{
     try{
-        let candidate = await Candidate.findOne({_id : req.params.id});
+
+        let candidate = await Candidate.findOne({$and:[{_id : req.params.id},{created_by:req.locals.user.id}]})
         if(!candidate) return res.status(400).send({error : "Candidate doesn't exist"});
         res.status(200).send(candidate);
     }
@@ -25,7 +29,7 @@ Router.get('/:id',async (req, res)=>{
     }
 })
 
-Router.post('/',async(req, res)=>{
+Router.post('/',authMiddleware,async(req, res)=>{
       // Validating request
       const {error} = validateCandidate(req.body,schema);
       if(!!error) return res.status(400).send({"error_message":error.details[0].message});
@@ -35,6 +39,7 @@ Router.post('/',async(req, res)=>{
 
       //storing in DB
       let body = _.pick(req.body,['name','phone','email']);
+      body.created_by = req.locals.user.id;
       const candidate = new Candidate(body);
       try{
         let user = await candidate.save();
@@ -46,7 +51,7 @@ Router.post('/',async(req, res)=>{
 
 })
 
-Router.put('/:id',async (req, res)=>{
+Router.put('/:id',authMiddleware,async (req, res)=>{
     let candidate = await Candidate.findOne({_id : req.params.id});
     if(!candidate) return res.status(400).send({"error_message":"Invalid Id"});
 
@@ -56,7 +61,7 @@ Router.put('/:id',async (req, res)=>{
     if(!!error) return res.status(400).send({"error_message":error.details[0].message});
 
     try{
-     let updatedCandidate = await Candidate.findOneAndUpdate({_id :req.params.id},{name :body.name,phone:body.phone,email:body.email},{new:true}).select({password:0});
+     let updatedCandidate = await Candidate.findOneAndUpdate({$and :[{_id :req.params.id},{created_by : req.locals.user.id}]},{name :body.name,phone:body.phone,email:body.email},{new:true}).select({password:0});
      res.status(201).send(updatedCandidate);
     }
     catch(ex){

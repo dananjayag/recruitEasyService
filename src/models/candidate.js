@@ -20,13 +20,17 @@ const candidateSchema = new Schema({
         required :true,
         minlength : 6,
         maxlength : 100
+    },
+    created_by : {
+        type : mongoose.SchemaTypes.ObjectId,
+        ref : 'Recruiter'
     }
 })
 
  export const  schema = {
      name : Joi.string().required().min(3).max(50),
      phone : Joi.number().required().min(10),
-     email : Joi.string().email().required().min(6).max(100)
+     email : Joi.string().email().required().min(6).max(100),
  }
 
  export function validateCandidate( candidate, schema){
