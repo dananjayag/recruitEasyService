@@ -1,14 +1,19 @@
 import express from 'express';
 import _ from 'lodash';
 import Candidate,{validateCandidate,schema} from '../models/candidate';
+import Interview from '../models/interview';
 import {authMiddleware} from '../middlewares/auth';
 const Router = express.Router();
 
 Router.get('/', authMiddleware,async (req, res)=>{
    try{
-        if(!!req.locals && !!req.locals.user)
+        if(!!req.locals && !!req.locals.user && !req.query.interviewedBy)
         {
             let candidates = await Candidate.find({created_by : req.locals.user.id})
+            res.status(200).send(candidates);
+        }
+        else{
+            let candidates = await Interview.find({created_by : req.locals.user.id}).select("candidate").populate("candidate").exec();
             res.status(200).send(candidates);
         }
    }
@@ -20,7 +25,7 @@ Router.get('/', authMiddleware,async (req, res)=>{
 Router.get('/:id',authMiddleware,async (req, res)=>{
     try{
 
-        let candidate = await Candidate.findOne({$and:[{_id : req.params.id},{created_by:req.locals.user.id}]})
+        let candidate = await Candidate.findOne({_id : req.params.id})
         if(!candidate) return res.status(400).send({error : "Candidate doesn't exist"});
         res.status(200).send(candidate);
     }

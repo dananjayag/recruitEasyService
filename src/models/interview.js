@@ -1,7 +1,6 @@
 import mongoose, {Schema} from 'mongoose';
 
 const interviewSchema = new Schema({
-     
       recruiter :{
           type : mongoose.SchemaTypes.ObjectId,
           ref : 'Recruiter'
@@ -10,8 +9,9 @@ const interviewSchema = new Schema({
         type : mongoose.SchemaTypes.ObjectId,
         ref : 'Candidate'
       },
-      role : {
-          type : String,
+      job : {
+        type :mongoose.SchemaTypes.ObjectId,
+        ref : 'Jobs'
       },
       currentSalary :{
           type : Number,
@@ -24,15 +24,29 @@ const interviewSchema = new Schema({
           enum : ['Stated','Contacted','In Progress', 'Scheduled', 'Scheduled but Not Attended','Not Cleared Interview', 'Closed By Recruiter', 'Accepted', 'Rejected', 'Joined', 'Accepted but Not Joined' ],
           default : 'Stated'
         },
-      skills : {
-        type : Array,
-      },
       started_at : {
-          type : mongoose.SchemaTypes.Date
+        type : mongoose.SchemaTypes.Date
       },
       last_updated : {
          type : mongoose.SchemaTypes.Date
-      }
-
+      },
+      next_schedule :{
+        type : mongoose.SchemaTypes.Date,
+        default : null
+      },
+      past_schedules : [
+       {
+            date : Date,
+            status : {
+              type : String,
+              enum : ["Completed", "Scheduled"],
+              default : "Scheduled"
+            }
+        }
+      ]
+     
       
 })
+
+const Interview = mongoose.model('Interview',interviewSchema);
+export default Interview;
