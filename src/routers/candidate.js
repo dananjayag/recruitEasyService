@@ -6,10 +6,12 @@ import {authMiddleware} from '../middlewares/auth';
 const Router = express.Router();
 
 Router.get('/', authMiddleware,async (req, res)=>{
+    const {search =""} = req.query
    try{
-        if(!!req.locals && !!req.locals.user && !req.query.interviewedBy)
+        if(!!req.locals && !!req.locals.user && search)
         {
-            let candidates = await Candidate.find({created_by : req.locals.user.id})
+            
+            let candidates = await Candidate.find({email:{$regex: '.*' + search + '.*' }})
             res.status(200).send(candidates);
         }
         else{

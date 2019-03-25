@@ -1,5 +1,6 @@
-import  mongoose,{Schema} from 'mongoose';
-
+import mongoose, {Schema} from 'mongoose';
+import Interview from './interview';
+import Joi from 'joi';
 const jobSchema = new Schema({
     title : {
         type : String,
@@ -31,10 +32,29 @@ const jobSchema = new Schema({
     },
     company_url : {
         type : String
-    }
+    },
+    interviews: [Interview.schema]
 })
 
 
-const Jobs = mongoose.model(jobSchema);
+const Jobs = mongoose.model('Jobs', jobSchema);
+
+
+export const  schema = {
+    title : Joi.string().required(),
+    hiring_organization: Joi.string().required(),
+    job_description : Joi.string(),
+    created_by: Joi.string(),
+    min_salary: Joi.number(),
+    max_salary: Joi.number(),
+    date_posted: Joi.date(),
+    company_url: Joi.string(),
+    job_location: Joi.string(),
+}
+
+
+export function validateJob(job){
+    return Joi.validate(job, schema)
+}
 
 export default Jobs;
