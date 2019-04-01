@@ -1,7 +1,7 @@
 module.exports = {
     apps : [{
       name: "recruit-easy-service",
-      script: "./dist/index.js",
+      script: "npm",
       instances: "max",
       env: {
         NODE_ENV: "development",

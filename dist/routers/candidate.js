@@ -78,7 +78,7 @@ Router.get('/', _auth.authMiddleware, function () {
                         return _context.stop();
                 }
             }
-        }, _callee, undefined, [[1, 15]]);
+        }, _callee, null, [[1, 15]]);
     }));
 
     return function (_x, _x2) {
@@ -123,7 +123,7 @@ Router.get('/:id', _auth.authMiddleware, function () {
                         return _context2.stop();
                 }
             }
-        }, _callee2, undefined, [[0, 9]]);
+        }, _callee2, null, [[0, 9]]);
     }));
 
     return function (_x3, _x4) {
@@ -192,7 +192,7 @@ Router.post('/', _auth.authMiddleware, function () {
                         return _context3.stop();
                 }
             }
-        }, _callee3, undefined, [[11, 18]]);
+        }, _callee3, null, [[11, 18]]);
     }));
 
     return function (_x5, _x6) {
@@ -256,7 +256,7 @@ Router.put('/:id', _auth.authMiddleware, function () {
                         return _context4.stop();
                 }
             }
-        }, _callee4, undefined, [[9, 16]]);
+        }, _callee4, null, [[9, 16]]);
     }));
 
     return function (_x7, _x8) {

@@ -36,7 +36,7 @@ var getJobs = exports.getJobs = function () {
                         return _context.stop();
                 }
             }
-        }, _callee, this, [[0, 8]]);
+        }, _callee, null, [[0, 8]]);
     }));
 
     return function getJobs(_x, _x2) {
@@ -83,7 +83,7 @@ var getJob = exports.getJob = function () {
                         return _context2.stop();
                 }
             }
-        }, _callee2, this, [[1, 12]]);
+        }, _callee2, null, [[1, 12]]);
     }));
 
     return function getJob(_x3, _x4, _x5) {
@@ -144,7 +144,7 @@ var createJob = exports.createJob = function () {
                         return _context3.stop();
                 }
             }
-        }, _callee3, this, [[8, 14]]);
+        }, _callee3, null, [[8, 14]]);
     }));
 
     return function createJob(_x6, _x7, _x8) {

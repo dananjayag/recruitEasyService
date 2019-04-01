@@ -15,8 +15,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
 function hashPassword(user) {
-  var _this = this;
-
   return new Promise(function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(resolve, reject) {
       var Salt, hashedPassword;
@@ -53,7 +51,7 @@ function hashPassword(user) {
               return _context.stop();
           }
         }
-      }, _callee, _this, [[0, 11]]);
+      }, _callee, null, [[0, 11]]);
     }));
 
     return function (_x, _x2) {
@@ -63,7 +61,6 @@ function hashPassword(user) {
 }
 
 function comparepassword(hash, password) {
-  var _this2 = this;
 
   return new Promise(function () {
     var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(resolve, reject) {
@@ -100,7 +97,7 @@ function comparepassword(hash, password) {
               return _context2.stop();
           }
         }
-      }, _callee2, _this2, [[0, 7]]);
+      }, _callee2, null, [[0, 7]]);
     }));
 
     return function (_x3, _x4) {

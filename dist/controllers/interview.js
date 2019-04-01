@@ -39,7 +39,7 @@ var getInterview = exports.getInterview = function () {
                         return _context.stop();
                 }
             }
-        }, _callee, this, [[1, 9]]);
+        }, _callee, null, [[1, 9]]);
     }));
 
     return function getInterview(_x, _x2, _x3) {
@@ -106,7 +106,7 @@ var createInterview = exports.createInterview = function () {
                         return _context2.stop();
                 }
             }
-        }, _callee2, this, [[8, 19]]);
+        }, _callee2, null, [[8, 19]]);
     }));
 
     return function createInterview(_x4, _x5, _x6) {
@@ -152,7 +152,7 @@ var updateInterview = exports.updateInterview = function () {
                         return _context3.stop();
                 }
             }
-        }, _callee3, this, [[3, 10]]);
+        }, _callee3, null, [[3, 10]]);
     }));
 
     return function updateInterview(_x7, _x8, _x9) {
@@ -209,7 +209,7 @@ var scheduleInterview = exports.scheduleInterview = function () {
                         return _context4.stop();
                 }
             }
-        }, _callee4, this, [[4, 17]]);
+        }, _callee4, null, [[4, 17]]);
     }));
 
     return function scheduleInterview(_x10, _x11, _x12) {

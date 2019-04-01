@@ -98,7 +98,7 @@ var sendEmail = exports.sendEmail = function () {
             return _context.stop();
         }
       }
-    }, _callee, undefined, [[0, 14]]);
+    }, _callee, null, [[0, 14]]);
   }));
 
   return function sendEmail(_x) {

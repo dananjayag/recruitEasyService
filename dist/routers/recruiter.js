@@ -58,7 +58,7 @@ Router.get('/', function () {
                         return _context.stop();
                 }
             }
-        }, _callee, undefined, [[0, 7]]);
+        }, _callee, null, [[0, 7]]);
     }));
 
     return function (_x, _x2) {
@@ -103,7 +103,7 @@ Router.get('/:id', function () {
                         return _context2.stop();
                 }
             }
-        }, _callee2, undefined, [[0, 9]]);
+        }, _callee2, null, [[0, 9]]);
     }));
 
     return function (_x3, _x4) {
@@ -179,7 +179,7 @@ Router.post('/', function () {
                         return _context3.stop();
                 }
             }
-        }, _callee3, undefined, [[12, 20]]);
+        }, _callee3, null, [[12, 20]]);
     }));
 
     return function (_x5, _x6) {
@@ -243,7 +243,7 @@ Router.put('/:id', function () {
                         return _context4.stop();
                 }
             }
-        }, _callee4, undefined, [[9, 16]]);
+        }, _callee4, null, [[9, 16]]);
     }));
 
     return function (_x7, _x8) {
@@ -279,7 +279,7 @@ Router.delete('/:id', function () {
                         return _context5.stop();
                 }
             }
-        }, _callee5, undefined);
+        }, _callee5);
     }));
 
     return function (_x9, _x10) {

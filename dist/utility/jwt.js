@@ -22,8 +22,6 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 var jwtSecret = _config2.default.get("jwtsecret");
 
 function generateJwtToken(payload) {
-    var _this = this;
-
     return new Promise(function () {
         var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(resolve, reject) {
             var token;
@@ -57,7 +55,7 @@ function generateJwtToken(payload) {
                             return _context.stop();
                     }
                 }
-            }, _callee, _this, [[0, 7]]);
+            }, _callee, null, [[0, 7]]);
         }));
 
         return function (_x, _x2) {
@@ -67,8 +65,6 @@ function generateJwtToken(payload) {
 }
 
 function validateToken(token) {
-    var _this2 = this;
-
     return new Promise(function () {
         var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(resolve, reject) {
             return regeneratorRuntime.wrap(function _callee2$(_context2) {
@@ -88,7 +84,7 @@ function validateToken(token) {
                             return _context2.stop();
                     }
                 }
-            }, _callee2, _this2);
+            }, _callee2);
         }));
 
         return function (_x3, _x4) {

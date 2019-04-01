@@ -37,7 +37,7 @@ var getCandidates = exports.getCandidates = function () {
                         return _context.stop();
                 }
             }
-        }, _callee, this, [[0, 8]]);
+        }, _callee, null, [[0, 8]]);
     }));
 
     return function getCandidates(_x, _x2, _x3) {

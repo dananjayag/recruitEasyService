@@ -1,6 +1,7 @@
 {
   "presets": [
     "env",
-    "pundits"
-  ]
+    "pundits",
+  ],
+  "plugins": ["@babel/plugin-transform-regenerator"]
 }

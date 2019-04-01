@@ -90,7 +90,7 @@ var loginContoller = exports.loginContoller = function () {
                         return _context.stop();
                 }
             }
-        }, _callee, undefined, [[1, 21]]);
+        }, _callee, null, [[1, 21]]);
     }));
 
     return function loginContoller(_x2, _x3) {

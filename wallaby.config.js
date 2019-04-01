@@ -17,7 +17,7 @@ module.exports = wallaby => ({
 
   testFramework: 'ava',
 
-  setup: () => require('babel-polyfill'),
+  setup: () => ({require('babel-polyfill'), require.resolve('regenerator-runtime/runtime')}),
 
   compilers: {
     '**/*.js': wallaby.compilers.babel(),

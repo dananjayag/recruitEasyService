@@ -59,7 +59,7 @@ var authMiddleware = exports.authMiddleware = function () {
                   return _context.stop();
             }
          }
-      }, _callee, this, [[6, 13]]);
+      }, _callee, null, [[6, 13]]);
    }));
 
    return function authMiddleware(_x, _x2, _x3) {
