@@ -14,8 +14,9 @@ import candidate from  './routers/candidate';
 import interview from './routers/interview';
 import {errorMiddleWare} from './middlewares/error'
 import {authMiddleware} from './middlewares/auth';
-const app = express();
 
+const PORT = process.env.PORT || 3001
+const app = express();
 process.on('unhandledRejection',(err)=>{
     console.log("Something went wrong ", err);
     process.exit(1);
@@ -34,7 +35,7 @@ app.use('/api/v1/interview',authMiddleware, interview);
 app.use('/api/v1/job',authMiddleware, jobs);
 app.use(errorMiddleWare);
 
-app.listen(3001,()=>{
+app.listen(PORT,()=>{
     console.log("Started Server in port number 3000")
 })
 
