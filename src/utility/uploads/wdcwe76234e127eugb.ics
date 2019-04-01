@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//superman-industries.com//ical-generator//EN
+NAME:My Testfeed
+X-WR-CALNAME:My Testfeed
+TIMEZONE-ID:Europe/Berlin
+X-WR-TIMEZONE:Europe/Berlin
+BEGIN:VEVENT
+UID:wdcwe76234e127eugb@sebbo.net
+SEQUENCE:0
+DTSTAMP:20190331T205105Z
+DTSTART:20190331T205105Z
+DTEND:20190331T205105Z
+SUMMARY:My Event
+LOCATION:Bangalore
+ORGANIZER;CN="Sebastian Pekarek":mailto:mail@example.com
+END:VEVENT
+END:VCALENDAR

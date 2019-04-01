@@ -15,9 +15,10 @@ export async function getJob(req,res,next){
 
     const { user = {} } = req.locals || {};
     try {
-       const job = await Jobs.findOne({_id:req.params.id, created_by : user.id}).populate();
-       if(!!job){
-       res.status(200).send({job});
+       const job = await Jobs.findOne({_id:req.params.id, created_by : user.id});
+       const interviews = await Interview.find({'job' : job._id}).populate('candidate');
+       if(!!job && !!interviews){
+       res.status(200).send({job, interviews});
        }
        next()
     }

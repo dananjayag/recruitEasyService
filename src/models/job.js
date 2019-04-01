@@ -33,7 +33,6 @@ const jobSchema = new Schema({
     company_url : {
         type : String
     },
-    interviews: [Interview.schema]
 })
 
 

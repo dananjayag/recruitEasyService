@@ -39,8 +39,8 @@ const interviewSchema = new Schema({
           ref : 'Recruiter'
       },
       candidate : {
-        type : mongoose.SchemaTypes.ObjectId,
-        ref : 'Candidate'
+        ref : 'Candidate',
+        type: mongoose.Schema.Types.ObjectId,
       },
       job : {
         type :mongoose.SchemaTypes.ObjectId,
@@ -54,8 +54,8 @@ const interviewSchema = new Schema({
       },
       status : {
           type : String,
-          enum : ['Contacted','In Progress', 'Scheduled', 'Scheduled but Not Attended','Not Cleared Interview', 'Closed By Recruiter', 'Accepted', 'Rejected', 'Joined', 'Accepted but Not Joined' ],
-          default : 'Stated'
+          enum : ["Contacted","In_Progress","Scheduled","Scheduled_but_Not_Attended","Not_Cleared_Interview","Closed_By_Recruiter","Accepted","Rejected","Joined","Accepted_but_Not_Joined"],
+          default : 'Contacted'
       }, 
       rounds: [Round.schema],
 })

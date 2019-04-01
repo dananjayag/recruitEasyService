@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//superman-industries.com//ical-generator//EN
+NAME:My Testfeed
+X-WR-CALNAME:My Testfeed
+TIMEZONE-ID:Europe/Berlin
+X-WR-TIMEZONE:Europe/Berlin
+BEGIN:VEVENT
+UID:79dacdc5-69d1-4e2e-8eaa-1b032a1b8caf@sebbo.net
+SEQUENCE:0
+DTSTAMP:20190401T180118Z
+DTSTART:20190403T025410Z
+DTEND:20190403T035410Z
+SUMMARY:Interview with dananjayagokhale@rediffmail.com
+LOCATION:www.skype.com
+ORGANIZER;CN="chubi":mailto:dananjayagokhale@rediffmail.com
+END:VEVENT
+END:VCALENDAR

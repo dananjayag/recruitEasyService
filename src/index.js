@@ -11,6 +11,7 @@ import recruiter from  './routers/recruiter';
 import jobs from './routers/jobs'
 import auth from './routers/auth';
 import candidate from  './routers/candidate';
+import interview from './routers/interview';
 import {errorMiddleWare} from './middlewares/error'
 import {authMiddleware} from './middlewares/auth';
 const app = express();
@@ -29,6 +30,7 @@ app.use(bodyParser.json());
 app.use('/api/v1/auth', auth);
 app.use('/api/v1/recruiter',authMiddleware, recruiter);
 app.use('/api/v1/candidate',authMiddleware, candidate);
+app.use('/api/v1/interview',authMiddleware, interview);
 app.use('/api/v1/job',authMiddleware, jobs);
 app.use(errorMiddleWare);
 
